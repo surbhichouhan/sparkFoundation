@@ -1,0 +1,45 @@
+{%  extends 'home.htm' %}
+{% load static%}
+{% block title %} All Customers {% endblock %}
+
+{% block css %} 
+<style>
+
+  #customer_table{
+   width: 500px;
+   
+  }
+</style>
+{% endblock%}
+{% block body %}
+<div class="container align-middle my-3" >
+  
+  <table id="customer_table" class="table table-bordered border-dark">
+    <thead>
+      <tr class="table-info text-center">
+        <th scope="col">Sr No</th>
+        <th scope="col">Customer Name</th>
+       <!-- <th scope="col">Customer Email Id</th>
+        <th scope="col">Balance</th> -->
+        <th scope="col">Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+      <tr class= "table-warning text-center">
+        <th  scope="row">{{ forloop.counter}}</th>
+        <td>{{customer.name}}</td>
+   <!--  <td>{{customer.email}}</td> 
+        <td>{{customer.current_balance}}</td>-->
+        <td><a href="customer/{{customer.id}}"><button  class="btn btn-primary ">{{button}}</button></a>
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+  </table>
+ 
+  
+</div> 
+{% endblock %}
+</html>

@@ -1,0 +1,53 @@
+{% extends 'home.htm' %}
+
+{% block title %} Transferrring {% endblock %}
+
+{% block body%}
+{% block css %}
+<style>
+.card{
+  position: absolute;
+  left: 150px;
+  height: 450px;
+  width: 400px;
+  background-color :khaki;
+  color:blue;
+}
+#top{
+  height: 50px;
+  text-align: center;
+  text-indent: 5px;
+}
+label{
+  font-size: 28px;
+  
+}
+
+
+</style>
+{% endblock %}
+<div class="container my-4">
+<div id ="top" class="bg-primary "><h3> You are transferring money from <b id="b"><u>{{from_customer.name}} </u></b> to <b><u>{{to_customer.name}}</u></b></h3></div>
+<div class="card my-4">
+<form class="my-2 mx-2" action="/done" method="POST"> 
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">From account of </label>
+        <input name ="from_customer" type="text" id="disabledTextInput" class="form-control" placeholder={{from_customer.name}} value="{{from_customer.name}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">To account of </label>
+        <input name="to_customer" type="text" id="disabledTextInput" class="form-control" placeholder={{from_customer.name}} value="{{to_customer.name}}">
+      </div>
+
+<div class="input-group my-3">
+    <label for="balance"> Amount </label>
+    <input name ="balance" type="text" class="form-control mx-2" placeholder="Enter amount to transfer" aria-label="Money" aria-describedby="button-addon2">
+    <button class="btn btn-outline-danger " type="submit" id="button-addon2">Done</button>
+  </div>
+  
+</form>
+</div>
+</div>
+{% endblock %}

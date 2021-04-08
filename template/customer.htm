@@ -1,0 +1,115 @@
+{%extends 'home.htm'%}
+
+{% block title%} customer.name {% endblock %}
+{% block css %} 
+<style>
+
+  #contain{
+    background-color: whitesmoke;
+    height: 550px;
+    width: 700px;
+  }
+  #transfers{
+    width: 700px;
+  }
+
+  #all_tansfer{
+    background-color: gray;
+  }
+  
+</style>
+}
+
+{% endblock %}
+{% block body %}
+
+<div class="container mx-4 my-4" id="contain" >
+  <div class="row" id="row1">
+  <table class="table table-bordered border-dark mx-2 my-2">
+    <thead>
+      <tr class="table-success text-center">
+        
+        <th scope="col">Customer Name</th>
+       <th scope="col">Customer Email Id</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Transfer Money</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for custom in customer %}
+      <tr class= "table-info text-center">
+        
+        <td>{{custom.name}}</td>
+    <td>{{custom.email}}</td> 
+        <td>{{custom.current_balance}}</td>
+        <td><a href="/{{custom.id}}/all_customers"><button  class="btn btn-primary ">Transfer </button></a>
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+  </table>
+  </div>
+  <div id ="all_tansfer" class="my-3"><h3 > All Transfers </h3></div>
+ 
+   <div class="row" id="row2">
+        <div  class="card col-lg-6 border-dark">
+          <h5 class="card-header text-center text-danger">Transfered  </h5>
+          <div class="card-body">
+            <h5 class="card-title text-dark">FROM  :-</h5>
+            <table class="table table-bordered border-dark mx-2 my-2">
+              <thead>
+                <tr class="table-success text-center">
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Transfered Money</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for from_cus in transfer_from %}
+                <tr class= "table-info text-center">
+                  <td>{{from_cus.from_customer}}</td>
+                  <td>{{from_cus.balance_transferred}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div  class="card col-lg-6 border-dark ">
+          <h5 class="card-header text-center text-danger">Transfered  </h5>
+          <div class="card-body">
+            <h5 class="card-title text-dark">TO :- </h5>
+            <table class="table table-bordered border-dark mx-2 my-2">
+              <thead>
+                <tr class="table-success text-center">
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Transfered Money</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for to_cus in transfer_to %}
+                <tr class= "table-info text-center">
+                  <td>{{to_cus.to_customer}}</td>
+                  <td>{{to_cus.balance_transferred}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+           
+          </div>
+        </div>
+      </div>
+   
+  
+
+   
+  </div>
+  
+
+
+
+
+
+  
+
+{% endblock %}

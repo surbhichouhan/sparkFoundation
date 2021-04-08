@@ -1,0 +1,65 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>{% block title %} Home {% endblock %} </title>
+    
+    <style type="text/css"> 
+        body{
+            background-image: url("{% static 'bg.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: 2px;
+        
+        }
+        #home_card{
+            position: relative;
+            top : 50px;
+            left: 20px;
+            height: 550px;
+            width: 400px;
+            background-color:khaki;
+            color:black;
+            font-size: 22px;
+        }        
+
+        #viewCustomer{
+            position:absolute;
+            bottom: 50px;
+        }
+        
+    </style>
+    {% block css %} {% endblock %}
+</head>
+<body >
+    {% block body %}
+
+    <div class="container my-4  " >
+   
+    <div id = "home_card" class="card col-lg-6 border-dark position-relative top-0 bottom-50 end-0">
+        <h5 class="card-header text-center ">ABC Bank </h5>
+        <div class="card-body">
+          <h5 class="card-title ">Our services</h5>
+         <ul>
+             <li> Loan</li>
+             <li> Saving accounts </li>
+             <li> Internet Banking </li>
+             <li> Loan</li>
+             <li> Saving accounts </li>
+             <li> Internet Banking </li>
+         </ul>
+          <a href="all_customers" id="viewCustomer" class="btn btn-primary active" aria-current="page">View All Customers</a>
+        </div>
+      </div>
+</div>
+
+
+    {% endblock %}
+
+</body>
+</html>
